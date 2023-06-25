@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django Google Sign In</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body class="flex flex-col justify-center items-center">
+    {% load socialaccount %}
+    <h2 class="text-2xl font-extrabold m-4">Google Login</h2>
+    <a
+      class="bg-gradient-to-r from-slate-500 to-slate-800 text-white p-2 shadow-lg rounded-full text-sm"
+      href="{% provider_login_url 'google' %}?next=/"
+      >Login with google</a
+    >
+
+    {% if user.is_authenticated %}
+    <p>You're signed in as {{user.email}}</p>
+    <a
+      class="bg-gradient-to-r from-slate-500 to-slate-800 text-white p-2 shadow-lg rounded-full text-sm"
+      href="logout"
+      >Logout</a
+    >
+    {% endif %}
+  </body>
+</html>
